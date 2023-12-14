@@ -1,14 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import classes from "./Modal.module.css";
+import { useNavigate } from "react-router-dom";
 
-type ModalProps = {
-  onClickBackdrop: (event: React.MouseEvent<HTMLDivElement>) => void;
-};
+const Modal = (props: PropsWithChildren) => {
+  const navigate = useNavigate();
 
-const Modal = (props: PropsWithChildren<ModalProps>) => {
   return (
     <>
-      <div className={classes.backdrop} onClick={props.onClickBackdrop} />
+      <div className={classes.backdrop} onClick={() => navigate("..")} />
       <dialog open className={classes.modal}>
         {props.children}
       </dialog>
